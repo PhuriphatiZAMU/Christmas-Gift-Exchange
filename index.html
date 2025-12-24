@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Gift Exchange 🎄</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- HEADER -->
+        <span class="holly-icon">🎄</span>
+        <h1>Secret Santa</h1>
+        <p id="status-text">เพิ่มชื่อเพื่อนๆ เพื่อเริ่มจับสลาก</p>
+
+        <!-- SETUP PHASE -->
+        <div id="setup-phase">
+            <div class="input-group">
+                <input type="text" id="nameInput" placeholder="กรอกชื่อที่นี่..." onkeypress="handleEnter(event)">
+                <button class="btn-add" onclick="addName()">+</button>
+            </div>
+            
+            <ul class="name-list" id="nameList">
+                <!-- รายชื่อจะมาโผล่ตรงนี้ -->
+            </ul>
+
+            <button class="btn-start" onclick="startGame()">🎁 เริ่มจับสลาก</button>
+        </div>
+
+        <!-- GAME PHASE -->
+        <div id="game-phase">
+            <div class="grid-container" id="cardsContainer">
+                <!-- การ์ดผู้เล่นจะมาโผล่ตรงนี้ -->
+            </div>
+            <button class="btn-reset" onclick="resetGame()">เริ่มใหม่ทั้งหมด</button>
+        </div>
+    </div>
+
+    <!-- MODAL FOR RESULT -->
+    <div class="overlay" id="resultModal">
+        <div class="modal-content">
+            <div id="giftAnim" class="gift-box">🎁</div>
+            
+            <div id="loadingText">กำลังสุ่ม...</div>
+            
+            <div class="result-text" id="resultContent">
+                <div style="font-size: 1rem; color: #888;">ของขวัญที่คุณได้คือของ...</div>
+                <div class="result-name" id="winnerName">-</div>
+                <button class="modal-btn" onclick="closeModal()">ตกลง</button>
+            </div>
+        </div>
+    </div>
+
+        <!-- RESET CONFIRMATION MODAL -->
+        <div class="overlay" id="resetModal">
+            <div class="modal-content">
+                <div>ต้องการเริ่มใหม่ทั้งหมดใช่ไหม? รายชื่อจะหายหมดนะ</div>
+                <div class="modal-actions">
+                    <button class="btn-confirm" onclick="doReset()">ตกลง</button>
+                    <button class="btn-cancel" onclick="closeResetModal()">ยกเลิก</button>
+                </div>
+            </div>
+        </div>
+
+    <script src="app.js" defer></script>
+</body>
+</html>
